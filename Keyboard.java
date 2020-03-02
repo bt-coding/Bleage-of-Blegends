@@ -7,16 +7,16 @@ public class Keyboard extends KeyAdapter{
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W){
-            game.moving[0] = true;
-        }
-        if(key == KeyEvent.VK_A){
             game.moving[3] = true;
         }
+        if(key == KeyEvent.VK_A){
+            game.moving[0] = true;
+        }
         if(key == KeyEvent.VK_S){
-            game.moving[1] = true;
+            game.moving[2] = true;
         }
         if(key == KeyEvent.VK_D){
-            game.moving[2] = true;
+            game.moving[1] = true;
         }
         if(key == KeyEvent.VK_F){
             game.windowNum = 1;
@@ -28,16 +28,16 @@ public class Keyboard extends KeyAdapter{
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W){
-            game.moving[0] = false;
-        }
-        if(key == KeyEvent.VK_A){
             game.moving[3] = false;
         }
+        if(key == KeyEvent.VK_A){
+            game.moving[0] = false;
+        }
         if(key == KeyEvent.VK_S){
-            game.moving[1] = false;
+            game.moving[2] = false;
         }
         if(key == KeyEvent.VK_D){
-            game.moving[2] = false;
+            game.moving[1] = false;
         }
     }
 }
