@@ -90,10 +90,10 @@ public class Game{
             y = 0;
         }
         if(x+temp.length > map.length){
-            x = map.length-playerView.length;
+            x = map.length-temp.length;
         }
         if(y+temp[1].length > map[0].length){
-            y = map[0].length-playerView.length;
+            y = map[0].length-temp.length;
         }
         
         //System.out.println("Player View Width: "+playerView.length+" Height: "+playerView[0].length);
