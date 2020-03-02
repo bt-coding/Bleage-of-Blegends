@@ -37,7 +37,7 @@ public class Keyboard extends KeyAdapter{
             game.moving[2] = false;
         }
         if(key == KeyEvent.VK_D){
-            game.moving[1] = false;
+            game.moving[1   ] = false;
         }
     }
 }

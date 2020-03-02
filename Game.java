@@ -65,16 +65,16 @@ public class Game{
                         };
     }
     public void update(double delay){
-        if(moving[0]){
+        if(moving[0] && character.getLoc()[0]-delay*character.getSpeed() >= 0){
             character.moveV(character.getSpeed()*delay*-1);
         }
-        if(moving[1]){
+        if(moving[1] && character.getLoc()[0]+delay*character.getSpeed() <= map.length){
             character.moveV(character.getSpeed()*delay);
         }
-        if(moving[2]){
+        if(moving[2] && character.getLoc()[1]+delay*character.getSpeed() <= map[0].length){
             character.moveH(character.getSpeed()*delay);
         }
-        if(moving[3]){
+        if(moving[3] && character.getLoc()[1]-delay*character.getSpeed() >= 0){
             character.moveH(character.getSpeed()*delay*-1);
         }
         playerView = getPlayerView();
