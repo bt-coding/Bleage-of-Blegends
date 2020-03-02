@@ -93,7 +93,7 @@ public class Game{
             x = map.length-temp.length;
         }
         if(y+temp[1].length > map[0].length){
-            y = map[0].length-temp.length;
+            y = map[0].length-temp[1].length;
         }
         
         //System.out.println("Player View Width: "+playerView.length+" Height: "+playerView[0].length);
@@ -101,7 +101,7 @@ public class Game{
         
         for(int a = 0; a < temp.length; a++){
             for(int b = 0; b < temp[0].length; b++){
-                System.out.println("Map["+((int)x+a)+"]["+((int)y+b)+"]");
+                //System.out.println("Map["+((int)x+a)+"]["+((int)y+b)+"]");
                 temp[a][b] = map[(int)x+a][(int)y+b];
             }
         }

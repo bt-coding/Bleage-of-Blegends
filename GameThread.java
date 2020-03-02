@@ -7,5 +7,10 @@ public class GameThread implements Runnable{
     }
     public void run(){
         game.update(delay);
+        try {
+            Thread.sleep(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

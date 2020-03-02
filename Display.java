@@ -39,19 +39,21 @@ public class Display extends JComponent{
             }
         }
         else if(game.windowNum == 1){
-            playerView = game.playerView;
+            //playerView = game.playerView;
+            playerView = game.getPlayerView();
+            //System.out.println(playerView[0][0]);
             for(int x = 0; x < playerView.length; x++){
                 for(int y = 0; y < playerView[0].length; y++){
-                    if(map[x][y] == 0){
+                    if(playerView[x][y] == 0){
                         g.setColor(Color.GREEN);
                     }
-                    else if(map[x][y] == 1){
+                    else if(playerView[x][y] == 1){
                         g.setColor(Color.RED);
                     }
-                    else if(map[x][y] == 2){
+                    else if(playerView[x][y] == 2){
                         g.setColor(Color.ORANGE);
                     }
-                    else if(map[x][y] == 3){
+                    else if(playerView[x][y] == 3){
                         g.setColor(Color.BLUE);
                     }
                     g.fillRect((int)(x*playerViewScale[0])-(int)((game.character.getLoc()[0]%1)*playerViewScale[0]),(int)(y*playerViewScale[1])-(int)((game.character.getLoc()[1]%1)*playerViewScale[1]),(int)playerViewScale[0]+1,(int)playerViewScale[1]+1);
