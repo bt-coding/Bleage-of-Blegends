@@ -80,32 +80,32 @@ public class Game{
         playerView = getPlayerView();
     }
     public int[][] getPlayerView(){
-        int[][] playerView = new int[playerViewBoxDimentions[0]+1][playerViewBoxDimentions[1]+1];
-        double x = character.getLoc()[0]-(playerView.length/2);
-        double y = character.getLoc()[1]-(playerView[0].length/2);
+        int[][] temp = new int[playerViewBoxDimentions[0]+1][playerViewBoxDimentions[1]+1];
+        double x = character.getLoc()[0]-(temp.length/2);
+        double y = character.getLoc()[1]-(temp[0].length/2);
         if(x < 0){
             x = 0;
         }
         if(y < 0){
             y = 0;
         }
-        if(x+playerView.length > map.length){
+        if(x+temp.length > map.length){
             x = map.length-playerView.length;
         }
-        if(y+playerView[1].length > map[0].length){
+        if(y+temp[1].length > map[0].length){
             y = map[0].length-playerView.length;
         }
         
         //System.out.println("Player View Width: "+playerView.length+" Height: "+playerView[0].length);
         //System.out.println("Map Width: "+map.length+" Height: "+map[0].length);
         
-        for(int a = 0; a < playerView.length; a++){
-            for(int b = 0; b < playerView[0].length; b++){
+        for(int a = 0; a < temp.length; a++){
+            for(int b = 0; b < temp[0].length; b++){
                 System.out.println("Map["+((int)x+a)+"]["+((int)y+b)+"]");
-                playerView[a][b] = map[(int)x+a][(int)y+b];
+                temp[a][b] = map[(int)x+a][(int)y+b];
             }
         }
-        return playerView;
+        return temp;
     }
     public int[][] getMap(){
         return map;
