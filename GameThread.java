@@ -1,9 +1,11 @@
 public class GameThread implements Runnable{
     Game game;
-    public GameThread(Game g){
+    double delay;
+    public GameThread(Game g,double d){
         game = g;
+        delay = d;
     }
     public void run(){
-        game.update();
+        game.update(delay);
     }
 }

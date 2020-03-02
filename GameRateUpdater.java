@@ -7,7 +7,7 @@ public class GameRateUpdater implements Runnable{
     }
     public void run(){
         while(true){
-            new Thread(new GameThread(game)).start();
+            new Thread(new GameThread(game,(1000.0/fps)/1000.0)).start();
             try{
                 Thread.sleep(1000/fps);
             }
