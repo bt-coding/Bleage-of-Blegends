@@ -9,12 +9,12 @@ public class Game{
     int[][] map;
     //map view = 0, player view = 1
     int windowNum;
-    int[] playerViewBoxDimentions;
+    int[] playerViewBoxDimensions;
     int[][] playerView;
     public Game(){
         windowNum = 0;
-        playerViewBoxDimentions = new int[]{16,10};
-        playerView = new int[playerViewBoxDimentions[0]+1][playerViewBoxDimentions[1]+1];
+        playerViewBoxDimensions = new int[]{16,10};
+        playerView = new int[playerViewBoxDimensions[0]+1][playerViewBoxDimensions[1]+1];
         character = new Player();
         moving = new boolean[4];
         
@@ -80,7 +80,7 @@ public class Game{
         playerView = getPlayerView();
     }
     public int[][] getPlayerView(){
-        int[][] temp = new int[playerViewBoxDimentions[0]+1][playerViewBoxDimentions[1]+1];
+        int[][] temp = new int[playerViewBoxDimensions[0]+1][playerViewBoxDimensions[1]+1];
         double x = character.getLoc()[0]-(temp.length/2);
         double y = character.getLoc()[1]-(temp[0].length/2);
         if(x < 0){

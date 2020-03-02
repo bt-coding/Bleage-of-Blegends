@@ -3,16 +3,16 @@ import java.awt.*;
 public class Display extends JComponent{
     private Game game;
     private int[][] map;
-    private int[] screenDimentions;
+    private int[] screenDimensions;
     private double[] mapViewScale;
     private double[] playerViewScale;
     private int[][] playerView;
     public Display(Game g,int sw,int sh){
         game = g;
         map = game.getMap();
-        screenDimentions = new int[]{sw,sh};
+        screenDimensions = new int[]{sw,sh};
         mapViewScale = new double[]{(double)sw/map.length,(double)sh/map[0].length};
-        playerViewScale = new double[]{(double)sw/game.playerViewBoxDimentions[0],(double)sh/game.playerViewBoxDimentions[1]};
+        playerViewScale = new double[]{(double)sw/game.playerViewBoxDimensions[0],(double)sh/game.playerViewBoxDimensions[1]};
     }
     public void draw(){
         super.repaint();
