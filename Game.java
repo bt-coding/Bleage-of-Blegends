@@ -107,6 +107,43 @@ public class Game{
         }
         return temp;
     }
+    public boolean[] collides(double d){
+        boolean[] collisions = new boolean[4];
+        double x = character.getLoc()[0];
+        double y = character.getLoc()[1];
+        int width = 2;
+        int height = 2;
+        int[][] touchedBlocks = new int[][]{{(int)x,(int)y},{(int)x+1,(int)y},{(int)x+1,(int)y+1},{(int)x,(int)y+1}};
+        if(x%1 == 0 && y%1 > 0){
+           touchedBlocks = new int[][]{touchedBlocks[0],touchedBlocks[3]};
+           width = 1;
+        }
+        else if(x%1 > 0 && y%1 == 0){
+            touchedBlocks = new int[][]{touchedBlocks[0],touchedBlocks[1]};
+            height = 1;
+        }
+        else if(x%1 == 0 && y%1 == 0){
+            touchedBlocks = new int[][]{touchedBlocks[0]};
+            width = 1;
+            height = 1;
+        }
+        for(int a = -1; a < width+1; a++){
+            for(int b = -1; b < height+1; b++){
+                if((int)x+a >= 0 && (int)x+a < map.length && (int)y+b >= 0 && (int)y+b < map[0].length){
+                    boolean contains = false;
+                    for(int i = 0; i < touchedBlocks.length; i++){
+                        if(touchedBlocks[i][0] == (int)x+a && touchedBlocks[i][1] == (int)y+b){
+                            contains = true;
+                        }
+                    }
+                    if(!contains){
+                        
+                    }
+                }
+            }
+        }
+        return collisions;
+    }
     public int[][] getMap(){
         return map;
     }

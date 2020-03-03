@@ -79,8 +79,7 @@ public class Display extends JComponent{
                     g.fillRect((int)(x*playerViewScale[0])-(int)(xBlockShift),(int)(y*playerViewScale[1])-(int)(yBlockShift),(int)playerViewScale[0]+1,(int)playerViewScale[1]+1);
                 }
             }
-            g.setColor(Color.RED);
-            
+            g.setColor(new Color(148,0,211));
             g.fillRect((int)((game.character.getLoc()[0]-a-0.5)*playerViewScale[0]),(int)((game.character.getLoc()[1]-b-0.5)*playerViewScale[1]),(int)playerViewScale[0]+1,(int)playerViewScale[1]+1);
             g.setColor(Color.BLACK);
             g.drawString("Player location X: "+game.character.getLoc()[0]+" Y: "+game.character.getLoc()[1],10,10);
