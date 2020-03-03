@@ -65,16 +65,17 @@ public class Game{
                         };
     }
     public void update(double delay){
-        if(moving[0] && character.getLoc()[0]-delay*character.getSpeed() >= 0){
+        boolean[] collisions = collide(delay);
+        if(moving[0] && character.getLoc()[0]-delay*character.getSpeed() >= 0 && collisions[1]){
             character.moveV(character.getSpeed()*delay*-1);
         }
-        if(moving[1] && character.getLoc()[0]+delay*character.getSpeed() <= map.length){
+        if(moving[1] && character.getLoc()[0]+delay*character.getSpeed() <= map.length && collisions[0]){
             character.moveV(character.getSpeed()*delay);
         }
-        if(moving[2] && character.getLoc()[1]+delay*character.getSpeed() <= map[0].length){
+        if(moving[2] && character.getLoc()[1]+delay*character.getSpeed() <= map[0].length && collisions[2]){
             character.moveH(character.getSpeed()*delay);
         }
-        if(moving[3] && character.getLoc()[1]-delay*character.getSpeed() >= 0){
+        if(moving[3] && character.getLoc()[1]-delay*character.getSpeed() >= 0 && collisions[3]){
             character.moveH(character.getSpeed()*delay*-1);
         }
         playerView = getPlayerView();
@@ -107,8 +108,8 @@ public class Game{
         }
         return temp;
     }
-    public boolean[] collides(double d){
-        boolean[] collisions = new boolean[4];
+    public boolean[] collide(double d){
+        boolean[] collisions = new boolean[]{true, true, true, true};
         double x = character.getLoc()[0];
         double y = character.getLoc()[1];
         int width = 2;
@@ -137,7 +138,19 @@ public class Game{
                         }
                     }
                     if(!contains){
-                        
+                        if(a == -1 && (int)x+a == (int)(x-character.getSpeed()*d) && map[(int)x+a][(int)y+b] == 1){
+                            collisions[0] = false;
+                        }
+                        else if(b == -1 && map[(int)x+a][(int)(y-character.getSpeed()*d)+b] == 1){
+                            collisions[3] = false;
+                        }
+                        else if(a == width && map[(int)(x+character.getSpeed()*d)+a][(int)y+b] == 1){
+                            collisions[1] = false;
+                        }
+                        else if(b == height && map[(int)x+a][(int)(y+character.getSpeed()*d)+b] == 1){
+                            collisions[2] = false;
+                        }
+                        System.out.println("Up: "+collisions[0]+" Down: "+collisions[1]+" Right: "+collisions[2]+" Left: "+collisions[3]);
                     }
                 }
             }
