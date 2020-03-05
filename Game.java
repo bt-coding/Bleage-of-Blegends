@@ -66,10 +66,10 @@ public class Game{
     }
     public void update(double delay){
         boolean[] collisions = collide(delay);
-        if(moving[0] && character.getLoc()[0]-delay*character.getSpeed() >= 0 && collisions[1]){
+        if(moving[0] && character.getLoc()[0]-delay*character.getSpeed() >= 0 && collisions[0]){
             character.moveV(character.getSpeed()*delay*-1);
         }
-        if(moving[1] && character.getLoc()[0]+delay*character.getSpeed() <= map.length && collisions[0]){
+        if(moving[1] && character.getLoc()[0]+delay*character.getSpeed() <= map.length && collisions[1]){
             character.moveV(character.getSpeed()*delay);
         }
         if(moving[2] && character.getLoc()[1]+delay*character.getSpeed() <= map[0].length && collisions[2]){
@@ -108,6 +108,9 @@ public class Game{
         }
         return temp;
     }
+    public double getDis(double x1, double y1, double x2, double y2){
+        return Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
+    }
     public boolean[] collide(double d){
         boolean[] collisions = new boolean[]{true, true, true, true};
         double x = character.getLoc()[0];
@@ -138,24 +141,29 @@ public class Game{
                         }
                     }
                     if(!contains){
-                        if(a == -1 && (int)x+a == (int)(x-character.getSpeed()*d) && map[(int)x+a][(int)y+b] == 1){
+                        if(b == -1 && (int)y+b == (int)(y-character.getSpeed()*d) && map[(int)x+a][(int)y+b] == 1){
                             collisions[0] = false;
+                            System.out.println("Cannot go up to X: "+((int)x+a)+" Y: "+((int)y+b));
                         }
-                        else if(b == -1 && map[(int)x+a][(int)(y-character.getSpeed()*d)+b] == 1){
-                            collisions[3] = false;
-                        }
-                        else if(a == width && map[(int)(x+character.getSpeed()*d)+a][(int)y+b] == 1){
+                        else if(b == height && (int)y+b  == (int)(y+character.getSpeed()*d+height) && map[(int)x+a][(int)y+b] == 1){
                             collisions[1] = false;
+                            System.out.println("Cannot go down to X: "+((int)x+a)+" Y: "+((int)y+b));
                         }
-                        else if(b == height && map[(int)x+a][(int)(y+character.getSpeed()*d)+b] == 1){
+                        else if(a == width && (int)x+a == (int)(x+character.getSpeed()*d+width) && map[(int)x+a][(int)y+b] == 1){
                             collisions[2] = false;
+                            System.out.println("Cannot go right to X: "+((int)x+a)+" Y: "+((int)y+b));
                         }
-                        System.out.println("Up: "+collisions[0]+" Down: "+collisions[1]+" Right: "+collisions[2]+" Left: "+collisions[3]);
+                        else if(a == -1 && (int)x+a == (int)(x+character.getSpeed()*d) && map[(int)x+a][(int)y+b] == 1){
+                            collisions[3] = false;
+                            System.out.println("Cannot go left to X: "+((int)x+a)+" Y: "+((int)y+b));
+                        }
+                        //System.out.println("Up: "+collisions[0]+" Down: "+collisions[1]+" Right: "+collisions[2]+" Left: "+collisions[3]);
                     }
                 }
             }
         }
         return collisions;
+       
     }
     public int[][] getMap(){
         return map;

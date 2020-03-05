@@ -7,7 +7,7 @@ public class main{
         Display screen = new Display(game,(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()-29);
         frame.add(screen);
         Mouse mouse = new Mouse();
-        frame.addMouseListener(mouse);
+        frame.addMouseListener(mouse);  
         Keyboard keyboard = new Keyboard(game);
         frame.addKeyListener(keyboard);
         frame.setBounds(0,0,1000,1000);
